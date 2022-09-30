@@ -31,14 +31,14 @@ loginBtn.addEventListener("click", check);
 
 function check () {
     for ( const user of users) {
-      if (userName.value === user.username && passWord.value === user.password) {
+       
+        if (userName.value === user.username && passWord.value === user.password) {
         loginSuccess(user.username);
         return;
-    }   else {
-        loginFail();
+    }  
+    
     }
-    }
-   
+    loginFail();
    
 }
 
@@ -66,7 +66,7 @@ function loginFail () {
 }
 
 function whenLogout () {
-    console.log("hejehej")
+    
     message.innerText = "Vänligen logga in"
     loginBtn.style.display = "block"; 
     rubrik.style.display = "block";
