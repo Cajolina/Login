@@ -43,11 +43,11 @@ const users = [
 
 
 
-//Kontrollerar om myList finns i localStorage. !=tvärtom OM det INTE finns något i mylist så skapar den mylist i local storage. (När någon annan användare ska kolla på sidan)
+//Kontrollerar om myList finns i localStorage. !=tvärtom OM det INTE finns något i mylist så skapar den mylist i local storage. (När någon annan användare ska kolla på sidan) 
 
-if (!localStorage.getItem("myList")){
+if (!localStorage.getItem("myList")){ //om den redan finns vill man inte skriva över hela tiden 
     localStorage.setItem("myList", JSON.stringify(users)) 
-}
+} //om den inte finns lägger vi till den
 
 
 
@@ -73,6 +73,7 @@ logout.addEventListener("click", whenLogout)
 
 //
 function check () {
+    //Hämtar den senaste versionen av användarlistan
     const users = JSON.parse(localStorage.getItem("myList"))
     for ( const user of users) {
        
@@ -130,13 +131,14 @@ createBtn.addEventListener("click", createNewUser)
 
 //
 function createNewUser () {
+    //om jag inte har denna så skriver myList över hela tiden och bara den senaste nya användaren sparas.Hämtar listan myList . users behöver inte heta users*
 const users = JSON.parse(localStorage.getItem("myList"))
 
-//Skapar ett objekt- (Måste ligga inuti fuktionen, för att push letar efter newUser men den letar bara i sin egen funktion)
+//Skapar ett objekt- (Måste ligga inuti fuktionen, för att push letar efter newUser men den letar bara i sin egen funktion) 
 const newUser = {username: newUserN.value, password: newPassW.value}
-//Lägger in objekt i min array
+//Lägger in objekt i min array users*
 users.push(newUser)
-//skapar en lista med sparade "users" i myList varför här i?
+//skapar en lista med sparade "users" i myList .här skickar vi in listan igen. users*
 localStorage.setItem("myList", JSON.stringify(users))
 
 whenLogout()
