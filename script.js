@@ -100,8 +100,9 @@ function loginSuccess (username) {
     rubrik.style.display = "none";
     form.style.display = "none";
     message.style.color ="black";
-    //ingen stringify för vi sparar ett användarnamn (inget vi behöver översätta)
-    //Hämtar information från rad 82 function loginSuccess (username). Den som loggar in nu har sitt användarnamn sparat i localstorage. Ny nyckel.
+     //sätt ett värde till local storage//
+    //Hämtar information från function loginSuccess >>(username).<<  loggedInUser är en nyckel och username är värdet. (Behöver ingen stringify för vi sparar ett användarnamn (inget vi behöver översätta)Den som loggar in nu har sitt användarnamn sparat i localstorage.
+   
     localStorage.setItem("loggedInUser", username) 
 }
 
@@ -135,7 +136,7 @@ const users = JSON.parse(localStorage.getItem("myList"))
 const newUser = {username: newUserN.value, password: newPassW.value}
 //Lägger in objekt i min array
 users.push(newUser)
-//skapar en lista i myList
+//skapar en lista med sparade "users" i myList varför här i?
 localStorage.setItem("myList", JSON.stringify(users))
 
 whenLogout()
